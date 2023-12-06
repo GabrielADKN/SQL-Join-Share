@@ -1,0 +1,7 @@
+SELECT o.first_name, o.last_name, ROUND(AVG(v.price)) as average_price, COUNT(v.id) AS count
+FROM owners o
+JOIN vehicles v
+ON v.owner_id = o.id
+GROUP BY o.first_name, o.last_name
+HAVING ROUND(AVG(v.price)) > 10000 AND COUNT(v.id) > 1
+ORDER BY o.first_name DESC;
